@@ -82,7 +82,7 @@ class MyAdapter extends ArrayAdapter<String> {
     int rImgs[];
 
     MyAdapter(Context c, String title[], String description[], int imgs[]) {
-        super(c, R.layout.row, R.id.textView1, title);
+        super(c, R.layout.dashboard_list_item, R.id.textView1, title);
         this.context = c;
         this.rTitle = title;
         this.rDescription = description;
@@ -94,7 +94,7 @@ class MyAdapter extends ArrayAdapter<String> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View row = layoutInflater.inflate(R.layout.row, parent, false);
+        View row = layoutInflater.inflate(R.layout.dashboard_list_item, parent, false);
         ImageView images = row.findViewById(R.id.image);
         TextView myTitle = row.findViewById(R.id.textView1);
         TextView myDescription = row.findViewById(R.id.textView2);
