@@ -7,6 +7,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +21,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.shashank.navigationdrawer.R;
-
 
 
 public class DashboardFragment extends Fragment
@@ -50,19 +51,25 @@ public class DashboardFragment extends Fragment
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position ==  0) {
-                    Toast.makeText(getContext(), "Facebook Description", Toast.LENGTH_SHORT).show();
+                if (position ==  0)
+                {
+
+                    FragmentManager ft = getFragmentManager();
+                    FragmentTransaction fragmentTransaction =ft.beginTransaction();
+                    fragmentTransaction.replace(R.id.nav_host_fragment, new HardwareService());
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
                 }
-                if (position ==  0) {
+                if (position ==  1) {
                     Toast.makeText(getContext(), "Whatsapp Description", Toast.LENGTH_SHORT).show();
                 }
-                if (position ==  0) {
+                if (position ==  2) {
                     Toast.makeText(getContext(), "Twitter Description", Toast.LENGTH_SHORT).show();
                 }
-                if (position ==  0) {
+                if (position ==  3) {
                     Toast.makeText(getContext(), "Instagram Description", Toast.LENGTH_SHORT).show();
                 }
-                if (position ==  0) {
+                if (position ==  4) {
                     Toast.makeText(getContext(), "Youtube Description", Toast.LENGTH_SHORT).show();
                 }
             }
