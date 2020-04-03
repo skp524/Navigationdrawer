@@ -20,6 +20,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.shashank.navigationdrawer.ITSetupFragment;
 import com.shashank.navigationdrawer.MaintainenceServiceFragment;
 import com.shashank.navigationdrawer.R;
 
@@ -72,7 +73,11 @@ public class DashboardFragment extends Fragment
                     fragmentTransaction.commit();
                 }
                 if (position ==  3) {
-                    Toast.makeText(getContext(), "Instagram Description", Toast.LENGTH_SHORT).show();
+                    FragmentManager ft = getFragmentManager();
+                    FragmentTransaction fragmentTransaction =ft.beginTransaction();
+                    fragmentTransaction.replace(R.id.nav_host_fragment, new ITSetupFragment());
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
                 }
                 if (position ==  4) {
                     Toast.makeText(getContext(), "Youtube Description", Toast.LENGTH_SHORT).show();

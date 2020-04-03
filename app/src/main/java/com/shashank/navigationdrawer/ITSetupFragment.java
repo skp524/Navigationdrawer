@@ -1,31 +1,45 @@
 package com.shashank.navigationdrawer;
-
-
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import androidx.fragment.app.Fragment;
+import com.shashank.navigationdrawer.adapter.EditTextAdapter;
+import com.shashank.navigationdrawer.model.EditModel;
+import java.util.ArrayList;
 
+public class ITSetupFragment extends Fragment
+{
+    private ListView lv;
+    private EditTextAdapter editTextAdapter;
+    public ArrayList<EditModel> editModelArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class ITSetupFragment extends Fragment {
-
-
-    public ITSetupFragment() {
-        // Required empty public constructor
-    }
-
-
-    @Override
+    String mTitle[] = {"Laptop", "Desktop", "Printer", "LAN","Wifi","Security System","Server"};
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_itsetup, container, false);
+        View v=inflater.inflate(R.layout.fragment_itsetup, container, false);
+        lv = v.findViewById(R.id.listView);
+
+        editModelArrayList = populateList();
+        editTextAdapter = new EditTextAdapter(this,editModelArrayList);
+        lv.setAdapter(editTextAdapter);
+
+        return v;
+
+    }
+
+    private ArrayList<EditModel> populateList(){
+
+        ArrayList<EditModel> list = new ArrayList<>();
+
+        for(int i = 0; i < mTitle.length; i++){
+            EditModel editModel = new EditModel();
+            editModel.setTitle(mTitle[i]);
+            list.add(editModel);
+        }
+
+        return list;
     }
 
 }
